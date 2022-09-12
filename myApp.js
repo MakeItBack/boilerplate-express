@@ -5,10 +5,16 @@ let app = express();
 Use the app.get() method to serve the string "Hello Express" to GET requests matching the / (root) path.
 Be sure that your code works by looking at the logs, then see the results in the preview if you are using Replit.
 */
+console.log("Hello World");
 
+//Serve a string to a GET request to root path
+/* 
 app.get("/", function (req, res) {
    res.send("Hello Express");
 });
-console.log("Hello World");
+*/
+
+// Serve a file to a GET request to root path
+app.get("/", res.sendFile( __dirname + /views/index.html ));
 
 module.exports = app;
