@@ -24,12 +24,11 @@ app.get("/", function (req, res) {
 app.use("/public", express.static(__dirname + "/public"));
 
 // Create a simple API to serve json data to a GET request
-const data = { message: "Hello json" };
+
 app.get("/json", function (req, res) {
    let data = { message: "Hello json" };
    // Use an envirnoment variable from .env
-   const style = process.env.MESSAGE_STYLE;
-   if (style === "uppercase") {
+   if (process.env.MESSAGE_STYLE === "uppercase") {
       data.message = data.message.toUpperCase();
    }
    res.json(data);
