@@ -19,6 +19,13 @@ app.get("/", function (req, res) {
    res.sendFile(__dirname + "/views/index.html");
 });
 
+// Serve the contents of the public folder using express.static middleware
 app.use("/public", express.static(__dirname + "/public"));
+
+// Create a simple API to serve json data to a GET request
+const data = { message: "Hello json" };
+app.get("/json", function (req, res) {
+   res.json(data);
+});
 
 module.exports = app;
