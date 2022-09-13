@@ -1,5 +1,6 @@
 let express = require("express");
 let app = express();
+require("dotenv").config();
 
 /*
 Use the app.get() method to serve the string "Hello Express" to GET requests matching the / (root) path.
@@ -25,6 +26,10 @@ app.use("/public", express.static(__dirname + "/public"));
 // Create a simple API to serve json data to a GET request
 const data = { message: "Hello json" };
 app.get("/json", function (req, res) {
+   const data = { message: "Hello json" };
+   // Use an envirnoment variable from .env
+   data.message =
+      process.env.MESSAGE_STYLE === "uppercase" ? data.message.toUpperCase() : data.message;
    res.json(data);
 });
 
