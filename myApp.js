@@ -24,14 +24,15 @@ app.get("/", function (req, res) {
 app.use("/public", express.static(__dirname + "/public"));
 
 // Use an envirnoment variable from .env
-let data =
-   process.env.MESSAGE_STYLE === "uppercase"
-      ? { message: "HELLO JSON" }
-      : { message: "Hello json" };
 
 // Create a simple API to serve json data to a GET request
+let message = "Hello json";
 app.get("/json", function (req, res) {
-   res.json(data);
+   message = process.env.MESSAGE_STYLE === "uppercase" ? message.toUpperCase() : message;
+   res.json({ message: message });
 });
+
+console.log("message", message);
+console.log(process.env.MESSAGE_STYLE);
 
 module.exports = app;
