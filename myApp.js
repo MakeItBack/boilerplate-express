@@ -64,7 +64,7 @@ app.get("/:word/echo", (req, res) => {
 // Some characters (like %) cannot be used in URLs so need to be encoded
 app.get("/name", (req, res) => {
    const fullname = `${req.query.firstname} ${req.query.lastname}`;
-   res.json({ echo: fullname });
+   res.json({ name: fullname });
 });
 
 module.exports = app;
