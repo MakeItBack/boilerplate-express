@@ -63,7 +63,7 @@ app.get("/:word/echo", (req, res) => {
 // Query parameter values provided in the query URL are stored in the req.query object
 // Some characters (like %) cannot be used in URLs so need to be encoded
 app.get("/name", (req, res) => {
-   const fullname = `${req.query.firstname} ${req.query.lastname}`;
+   const fullname = `${req.query.first} ${req.query.last}`;
    res.json({ name: fullname });
 });
 
