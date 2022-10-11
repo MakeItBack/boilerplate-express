@@ -50,10 +50,21 @@ app.get(
    }
 );
 
+// Using ROUTE PARAMETERS such as /:userId/ to allow client/user input in the query URL
+// Query parameter values provided in the query URL are stored in the req.params object
 // Echo server - responds back to the user with the word they provided in the query (route) parameter
 app.get("/:word/echo", (req, res) => {
    const word = req.params.word;
    res.json({ echo: word });
+});
+
+// Using QUERY STRINGS such as ?userId=124132 to allow client/user input in the query URL
+// Multiple query strings can be provided at the same time by separating with an ampersand eg /library?userId=546&bookId=6754
+// Query parameter values provided in the query URL are stored in the req.query object
+// Some characters (like %) cannot be used in URLs so need to be encoded
+app.get("/name", (req, res) => {
+   const fullname = `${req.query.firstname} ${req.query.lastname}`;
+   res.json({ echo: fullname });
 });
 
 module.exports = app;
