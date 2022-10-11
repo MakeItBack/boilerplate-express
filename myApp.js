@@ -38,6 +38,7 @@ app.get("/json", function (req, res) {
    res.json({ message: message });
 });
 
+// Chaining middleware
 app.get(
    "/now",
    function (req, res, next) {
@@ -48,5 +49,11 @@ app.get(
       res.send({ time: req.time });
    }
 );
+
+// Echo server - responds back to the user with the word they provided in the query (route) parameter
+app.get("/:word/echo", (req, res) => {
+   const word = req.params.word;
+   res.json({ echo: word });
+});
 
 module.exports = app;
