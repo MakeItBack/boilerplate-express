@@ -1,4 +1,5 @@
 let express = require("express");
+let bodyParser = require("body-parser");
 let app = express();
 require("dotenv").config();
 
@@ -66,5 +67,10 @@ app.get("/name", (req, res) => {
    const fullname = `${req.query.first} ${req.query.last}`;
    res.json({ name: fullname });
 });
+
+// Sending a POST request to send data in the body of the request
+// To decode the body data coming from the post request we need to use body-parser package.
+// body-parser has been added to the project in the package.json and required at top of this file
+app.use(bodyParser.urlencoded({ extended: false }));
 
 module.exports = app;
