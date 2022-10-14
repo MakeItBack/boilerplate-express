@@ -73,4 +73,9 @@ app.get("/name", (req, res) => {
 // body-parser has been added to the project in the package.json and required at top of this file
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.post("/name", (req, res) => {
+   const fullname = `${req.body.first} ${req.body.last}`;
+   res.json({ name: fullname });
+});
+
 module.exports = app;
